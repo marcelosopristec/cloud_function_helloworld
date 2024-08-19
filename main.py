@@ -4,5 +4,5 @@ import functions_framework
 def helloworld(request: dict):
 
   return {
-    "message": "hello world",
+    "message": "hello world v2.0",
   }, 202
