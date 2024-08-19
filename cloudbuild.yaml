@@ -1,0 +1,23 @@
+steps:
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: deploy-cloud-function-helloworld
+    args:
+      - gcloud
+      - functions
+      - deploy
+      -  cloud_function_helloworld
+      - "--gen2"
+      - "--region=us-central1"
+      - "--runtime=python312"
+      - "--source=./"
+      - "--entry-point=helloworld"
+      - "--no-allow-unauthenticated"
+      - "--service-account"
+      - $_SERVICE_ACCOUNT_ID@$PROJECT_ID.iam.gserviceaccount.com
+      - "--env-vars-file=$_ENV_PATH"
+      - "--trigger-http"
+      - "--memory=768MB"
+      - "--cpu=0.583"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
